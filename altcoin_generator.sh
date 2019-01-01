@@ -16,6 +16,8 @@
 # change the following variables to match your new coin
 COIN_NAME="MyCoin"
 COIN_UNIT="MYC"
+# Halving 1 year
+COIN_HALVING="525600"
 # 42 million coins at total (litecoin total supply is 84000000)
 TOTAL_SUPPLY=42000000
 MAINNET_PORT="54321"
@@ -220,7 +222,7 @@ newcoin_replace_vars()
     done
 
     $SED -i "s/ltc/$COIN_UNIT_LOWER/g" src/chainparams.cpp
-
+    $SED -i "s/840000/$COIN_HALVING/" src/chainparams.cpp
     $SED -i "s/84000000/$TOTAL_SUPPLY/" src/amount.h
     $SED -i "s/1,48/1,$PUBKEY_CHAR/" src/chainparams.cpp
 
@@ -301,7 +303,7 @@ build_new_coin()
         docker_run "cd /$COIN_NAME_LOWER ; bash  /$COIN_NAME_LOWER/configure --disable-tests --disable-bench"
     fi
     # always build as the user could have manually changed some files
-    docker_run "cd /$COIN_NAME_LOWER ; make -j2"
+    docker_run "cd /$COIN_NAME_LOWER ; make -j8"
 }
 
 
