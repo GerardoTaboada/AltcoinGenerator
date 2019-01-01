@@ -17,7 +17,7 @@
 COIN_NAME="MyCoin"
 COIN_UNIT="MYC"
 # Targe block 1 * 60 = 1 minutes 
-COIN_BLOCKTARGET="1"
+COIN_BLOCKTARGET="1 "
 # Halving 1 year
 COIN_HALVING="525600"
 # 42 million coins at total (litecoin total supply is 84000000)
