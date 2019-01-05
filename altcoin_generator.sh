@@ -17,7 +17,7 @@
 COIN_NAME="MyCoin"
 COIN_UNIT="MYC"
 # Targe block 1 * 60 = 1 minutes 
-COIN_BLOCKTARGET="1 "
+#COIN_BLOCKTARGET="1 "
 # Halving 1 year
 COIN_HALVING="525600"
 # 42 million coins at total (litecoin total supply is 84000000)
@@ -224,7 +224,7 @@ newcoin_replace_vars()
     done
 
     $SED -i "s/ltc/$COIN_UNIT_LOWER/g" src/chainparams.cpp
-    $SED -i "s/2.5/$COIN_BLOCKTARGET/" src/chainparams.cpp
+#   $SED -i "s/2.5/$COIN_BLOCKTARGET/" src/chainparams.cpp
     $SED -i "s/840000/$COIN_HALVING/" src/chainparams.cpp
     $SED -i "s/84000000/$TOTAL_SUPPLY/" src/amount.h
     $SED -i "s/1,48/1,$PUBKEY_CHAR/" src/chainparams.cpp
